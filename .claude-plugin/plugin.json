@@ -1,0 +1,13 @@
+{
+  "name": "swisslifeops",
+  "description": "Opens Swiss Post IncaMail secured mail you have no account for, and runs the admin side of a Swiss life (RAV job-effort logging, applications, tax-prep organising, a daily digest). Human-in-the-loop: it drafts and prepares, but never sends money, signs, accepts, or files anything official without you. Pairs with the Playwright MCP and your Gmail MCP.",
+  "version": "0.2.0",
+  "author": {
+    "name": "nattimmis",
+    "url": "https://github.com/nattimmis"
+  },
+  "homepage": "https://github.com/nattimmis/swisslifeops",
+  "repository": "https://github.com/nattimmis/swisslifeops",
+  "license": "MIT",
+  "keywords": ["switzerland", "incamail", "rav", "job-room", "swissid", "unemployment", "life-ops", "automation"]
+}

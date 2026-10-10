@@ -1,0 +1,24 @@
+{
+  "name": "swisslifeops",
+  "description": "The open-source Swiss life-admin layer. Flagship feature: open Swiss Post IncaMail secured government mail even when you have no IncaMail account (RAV, SAH, courts and insurers send it constantly). Plus RAV job-effort logging, tailored applications, tax-prep organising and a daily digest. Human-in-the-loop by design. Run /swisslifeops:setup once.",
+  "owner": {
+    "name": "nattimmis",
+    "url": "https://github.com/nattimmis"
+  },
+  "plugins": [
+    {
+      "name": "swisslifeops",
+      "source": "./",
+      "description": "Open IncaMail secured mail + run Swiss life-admin, human-in-the-loop — needs Playwright MCP and a Gmail MCP.",
+      "category": "productivity",
+      "tags": [
+        "switzerland",
+        "incamail",
+        "rav",
+        "swissid",
+        "unemployment",
+        "automation"
+      ]
+    }
+  ]
+}

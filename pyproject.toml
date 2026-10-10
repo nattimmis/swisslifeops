@@ -4,14 +4,18 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "swisslifeops"
-version = "0.1.0"
-description = "A Swiss life-ops toolkit: RAV job-search logging, tailored job applications, email triage, tax-prep organisation and a daily digest - human-in-the-loop by design."
+version = "0.2.0"
+description = "Open Swiss Post IncaMail secured mail with no IncaMail account, plus RAV job-effort logging, applications, tax-prep organising and a daily digest - human-in-the-loop by design."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-keywords = ["switzerland", "rav", "job-search", "automation", "life-ops", "cli"]
+keywords = ["switzerland", "incamail", "swissid", "rav", "job-room", "unemployment", "automation", "life-ops", "cli"]
 authors = [{ name = "swisslifeops contributors" }]
 dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+# IncaMail opener uses Playwright. After installing, run: playwright install chromium
+browser = ["playwright>=1.40"]
 
 [project.urls]
 Homepage = "https://github.com/nattimmis/swisslifeops"

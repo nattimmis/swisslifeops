@@ -23,6 +23,17 @@ rav:
   office: "RAV Your-Town"
   counselor_email: "counselor@example.ch"
 
+incamail:
+  # Your email address = the IncaMail recipient. Used to pass the email-verification gate.
+  email: "you@example.com"
+  # OPTIONAL: let the CLI fetch the verification link itself (fully standalone, no Claude needed).
+  # Use an app password, never your main password; put the secret in the named env var.
+  # imap:
+  #   host: "imap.gmail.com"
+  #   user: "you@example.com"
+  #   password_env: "SWISSLIFEOPS_IMAP_PASSWORD"
+  #   mailbox: "INBOX"
+
 skills:
   - "Kubernetes / OpenShift"
   - "CI/CD, Terraform, Ansible"

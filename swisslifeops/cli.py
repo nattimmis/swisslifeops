@@ -62,6 +62,34 @@ def cmd_digest(args):
     print(core.build_digest({"Jobs": [], "Flat": [], "Admin": []}, needs_you=[]))
 
 
+def cmd_incamail(args):
+    """Open a Swiss Post IncaMail 'read link' and download its message + attachments."""
+    from . import incamail
+    cfg = {}
+    try:
+        cfg = core.load_config()
+    except Exception:
+        pass
+    ic = cfg.get("incamail", {}) if isinstance(cfg, dict) else {}
+    email_address = args.email or ic.get("email") or os.environ.get("SWISSLIFEOPS_EMAIL", "")
+    if not email_address:
+        print("Need your email: --email you@example.com (or set incamail.email in config, "
+              "or SWISSLIFEOPS_EMAIL).", file=sys.stderr)
+        sys.exit(2)
+    strategy = args.strategy or ("imap" if ic.get("imap") else "manual")
+    res = incamail.open_link(
+        args.url, email_address, strategy=strategy,
+        imap_cfg=ic.get("imap"), headful=args.headful, verify_wait=args.wait)
+    if res.get("ok"):
+        print(f"Opened. Saved to {res['dir']}")
+        print(f"Attachments: {res['attachments'] or 'none (see message.png)'}")
+    else:
+        print(f"Could not open the message: {res.get('error')}", file=sys.stderr)
+        print("Tip: with strategy=manual, write the verification link (from the IncaMail email) "
+              f"into {incamail.VERIFY_FILE} while this runs.", file=sys.stderr)
+        sys.exit(1)
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(prog="swisslifeops",
         description="Human-in-the-loop Swiss life-ops toolkit.")
@@ -85,6 +113,15 @@ def main(argv=None):
 
     s = sub.add_parser("digest", help="assemble one daily digest")
     s.set_defaults(func=cmd_digest)
+
+    s = sub.add_parser("incamail", help="open a Swiss Post IncaMail read-link (secured gov mail)")
+    s.add_argument("url", help="the https://app.incamail.com/Login?sec=...#token=... link")
+    s.add_argument("--email", help="your email address (the IncaMail recipient)")
+    s.add_argument("--strategy", choices=["manual", "imap"],
+                   help="how to fetch the verification link (default: imap if configured, else manual)")
+    s.add_argument("--headful", action="store_true", help="show the browser window")
+    s.add_argument("--wait", type=int, default=240, help="seconds to wait for the verification link")
+    s.set_defaults(func=cmd_incamail)
 
     args = p.parse_args(argv)
     return args.func(args)
