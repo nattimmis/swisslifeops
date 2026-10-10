@@ -34,6 +34,20 @@ incamail:
   #   password_env: "SWISSLIFEOPS_IMAP_PASSWORD"
   #   mailbox: "INBOX"
 
+# Background watcher (run `swisslifeops watch` on a timer). Needs incamail.email + incamail.imap.
+# It opens new secured mail, classifies it with a LOCAL model, and queues action cards.
+# It NEVER sends, signs, or submits - replies to authorities are always left for you to approve.
+watch:
+  verify_wait: 300
+  ollama:
+    base_url: "http://localhost:11434"   # your local Ollama
+    model: "qwen2.5:7b"
+  # Map document keys to local file paths; the classifier suggests which to attach to a reply.
+  dossier:
+    cv: "~/lifeops-docs/cv.pdf"
+    references: "~/lifeops-docs/reference_letters.pdf"
+    # signed_form: "~/lifeops-docs/signed_form.pdf"
+
 skills:
   - "Kubernetes / OpenShift"
   - "CI/CD, Terraform, Ansible"

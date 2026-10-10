@@ -62,6 +62,27 @@ def cmd_digest(args):
     print(core.build_digest({"Jobs": [], "Flat": [], "Admin": []}, needs_you=[]))
 
 
+def cmd_watch(args):
+    """One watcher pass: open new IncaMail, classify with the local model, queue action cards."""
+    from . import watch
+    cfg = _cfg()
+    try:
+        cards = watch.run_once(cfg)
+    except Exception as e:
+        print(f"watch error: {e}", file=sys.stderr)
+        sys.exit(1)
+    if not cards:
+        print("No new secured mail.")
+        return
+    for c in cards:
+        flag = "ACTION" if (c.get("needs_reply") or c.get("needs_signature")) else "info"
+        print(f"[{flag}] {c.get('subject','?')}: {c.get('summary','')}"
+              + (f"  (deadline {c['deadline']})" if c.get("deadline") else ""))
+        if c.get("suggested_attachment_paths"):
+            print(f"        suggested attachment(s): {c['suggested_attachment_paths']}")
+    print(f"\nQueued {len(cards)} card(s). Review NEEDS-YOU and approve any sends yourself.")
+
+
 def cmd_incamail(args):
     """Open a Swiss Post IncaMail 'read link' and download its message + attachments."""
     from . import incamail
@@ -113,6 +134,9 @@ def main(argv=None):
 
     s = sub.add_parser("digest", help="assemble one daily digest")
     s.set_defaults(func=cmd_digest)
+
+    s = sub.add_parser("watch", help="one watcher pass: open new IncaMail, classify locally, queue drafts (never sends)")
+    s.set_defaults(func=cmd_watch)
 
     s = sub.add_parser("incamail", help="open a Swiss Post IncaMail read-link (secured gov mail)")
     s.add_argument("url", help="the https://app.incamail.com/Login?sec=...#token=... link")

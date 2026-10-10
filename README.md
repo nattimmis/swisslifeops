@@ -88,6 +88,20 @@ address and any IMAP app-password live only in your local, git-ignored config.
 
 ---
 
+## Autonomous watcher (optional, runs on your own box)
+
+Schedule `swisslifeops watch` (cron / systemd timer) and it will, each pass:
+
+1. find **new** IncaMail notifications in your mailbox over IMAP,
+2. open and download each one (standalone — fetches its own verification link),
+3. classify it with a **local model** (Ollama: type, deadline, needs-signature/reply, which of your
+   configured documents is the correct attachment),
+4. write an action card + a `NEEDS-YOU` line.
+
+It **never sends, signs, or submits** — replying to an authority is the one irreversible step and is
+always left for you to approve. Because the classification runs on your own hardware, running it
+continuously costs essentially no API tokens. Configure `watch:` and `incamail.imap` in your config.
+
 ## Privacy & safety
 
 - **No personal data in this repo.** Everything personal lives in your local config and state dir,
