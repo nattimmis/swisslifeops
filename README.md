@@ -134,6 +134,7 @@ work** (contract or permanent).
 
 - LinkedIn: <https://www.linkedin.com/in/nathantimmis>
 - Email: nattimmis@gmail.com
+- Phone: +41 78 208 84 62
 - GitHub: <https://github.com/nattimmis> (see also [VeriGraph](https://github.com/nattimmis/verigraph))
 
 Like swisslifeops? ⭐ it, open an issue, or reach out — happy to build more cool tools.
