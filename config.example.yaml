@@ -1,0 +1,39 @@
+# Copy to ~/.config/swisslifeops/config.yaml and fill in your own values.
+# This example contains placeholders only - no real personal data.
+
+profile:
+  full_name: "Your Name"
+  location: "Your Town, Switzerland"
+  languages: ["German C1", "English C2"]
+  cv_url: "https://example.com/cv"
+  available_from: "immediately"
+
+documents:
+  dir: "~/lifeops-docs"          # your local docs folder (git-ignored)
+  default_dossier: ["cv.pdf", "reference_letters.pdf"]
+
+email:
+  from: "you@example.com"
+  # Sending is done through your own transport (MCP bridge or SMTP);
+  # configure it locally. swisslifeops prepares drafts by default.
+  transport: "draft-only"        # draft-only | smtp | bridge
+
+rav:
+  person_nr: "XXXXXXXX"
+  office: "RAV Your-Town"
+  counselor_email: "counselor@example.ch"
+
+skills:
+  - "Kubernetes / OpenShift"
+  - "CI/CD, Terraform, Ansible"
+  - "AWS / Azure / GCP"
+  - "Security, IAM, observability"
+
+# Per-employer fit-sheet data (example)
+employers:
+  example_ag:
+    display_name: "Example AG"
+    roles: ["Platform Engineer"]
+    needs:
+      - ["Kubernetes platform", "Ran K8s/OpenShift in production"]
+      - ["CI/CD + IaC", "GitLab CI/CD, Terraform, Ansible"]

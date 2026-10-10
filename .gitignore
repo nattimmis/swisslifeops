@@ -1,0 +1,18 @@
+# Never commit personal data or secrets
+config.yaml
+*.secret
+*secrets*
+*cookies*
+*.pdf
+*.docx
+*.doc
+/docs/
+/personal/
+/fit-sheets/
+.env
+.venv/
+__pycache__/
+*.pyc
+build/
+dist/
+*.egg-info/

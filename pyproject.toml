@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "swisslifeops"
+version = "0.1.0"
+description = "A Swiss life-ops toolkit: RAV job-search logging, tailored job applications, email triage, tax-prep organisation and a daily digest - human-in-the-loop by design."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["switzerland", "rav", "job-search", "automation", "life-ops", "cli"]
+authors = [{ name = "swisslifeops contributors" }]
+dependencies = ["PyYAML>=6.0"]
+
+[project.urls]
+Homepage = "https://github.com/nattimmis/swisslifeops"
+
+[project.scripts]
+swisslifeops = "swisslifeops.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["swisslifeops*"]
