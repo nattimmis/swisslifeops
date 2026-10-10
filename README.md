@@ -121,6 +121,23 @@ continuously costs essentially no API tokens. Configure `watch:` and `incamail.i
   and focuses on the piece swiss-rav doesn't cover (opening IncaMail secured mail) plus lightweight
   local logging; the two pair well. If you want full job-room.ch form automation, use swiss-rav too.
 
+## About / hire me
+
+I'm **Nathan Timmis** — a senior platform / DevOps / SRE and security engineer near Zürich (Swiss,
+C1 German). I built swisslifeops because the Swiss RAV + IncaMail experience frustrated me: important
+secured mail from the authorities was needlessly hard to open, and I kept nearly missing things. So I
+automated it, the honest, human-in-the-loop way.
+
+If this is the kind of tool you'd want built — pragmatic automation, browser + MCP integration,
+platform/SRE, Kafka/Kubernetes/cloud, or AI-assisted developer tooling — **I'm open for development
+work** (contract or permanent).
+
+- LinkedIn: <https://www.linkedin.com/in/nathantimmis>
+- Email: nattimmis@gmail.com
+- GitHub: <https://github.com/nattimmis> (see also [VeriGraph](https://github.com/nattimmis/verigraph))
+
+Like swisslifeops? ⭐ it, open an issue, or reach out — happy to build more cool tools.
+
 ## Status
 
 v0.2 — IncaMail opener working end-to-end; RAV logging, fit-sheets, digest scaffolded. MIT licensed.
